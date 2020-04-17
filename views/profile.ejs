@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+      .box{
+    position: relative;
+    left:18%;
+    width:50vh;
+    height:80vh;
+    padding: 40px;
+    margin-top:2vh;
+    margin-bottom: 2vh;
+    background: rgba(0,0,0,0.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 1.2vh;
+    overflow-y:scroll;
+}
+
+.box h2{
+    margin : 0 0 30px;
+    padding: 0;
+    color:#fff;
+    text-align: center
+}
+
+.box .inputBox {
+    position: relative;
+}
+.box .inputBox input{
+    width:100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    border:none;
+    border-bottom: 1px solid #fff;
+    outline:none;
+    background:transparent;
+    
+}
+
+
+.box {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+  }
+  .box::-webkit-scrollbar { 
+    display: none;  
+  }
+  
+  textarea {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+  }
+  
+  textarea::-webkit-scrollbar { 
+    display: none;  
+  }
+
+.box .inputBox label{
+    position: absolute;
+    top:0;
+    left:0;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events:none;
+    transition: .5s;
+}
+
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label {
+    top: -26px;
+    left:0;
+    color:#03a9f4;
+    font-size: 12px;
+}
+
+.box input[type="submit" i]{
+    background: transparent;
+    border:none;
+    outline:none;
+    color:#fff;
+    align-items: center;
+    font-size: 16px;
+    background:#03a9f4;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius:5px;
+}
+input::placeholder{
+    color:transparent;
+ }
+ input:focus::placeholder{
+    color:#ECECF2;
+  }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 style="text-align: center;margin-bottom: 40px;">Dashboard - WITSY</h1>
+  <br>
+  <p style="font-size: 20px; text-align: center;margin-bottom:5vh;color: rgb(60, 60, 201);">Your Details</p> 
+             
+  <%- include('./partials/messages') %>
+
+  <table class="table table-hover">
+    <tbody>
+        <tr>
+          <th>Name</th>
+            <td><%= list.name %></td>
+        </tr>
+        <tr>
+          <th>Email Id</th>
+            <td><%= list.email %></td>
+        </tr>
+        <tr>
+          <th>Contact No</th>
+            <td><%= list.phone %></td>
+        </tr>
+        <% if(list.state){ %>
+            <tr>
+                <th>State</th>
+                <td><%= list.state %></td>
+            </tr>
+        <% } %> 
+        <% if(list.city){ %>
+            <tr>
+                <th>City</th>
+                <td><%= list.city %></td>
+            </tr>
+        <% } %>
+        <% if(list.address){ %>
+            <tr>
+                <th>Address</th>
+                <td><%= list.address %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<a href="/users/logout" class="btn btn-warning">Logout</a>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1">Edit Details</button>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal2">Add Details</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit SignedUp Details</h4>
+        </div>
+        <div class="modal-body box">
+            <form method="post" id="data" autocomplete="off" action="/users/update/<%=list._id%>?change=edit">
+                <h2 style="text-align: left; color:#9c8888ad">User Details</h2>
+                <br>
+                <div class="inputBox">
+                    <input type = "text" name = "name" value=<%= list.name%> >
+                    <label>Name</label>
+                </div>
+                <div class="inputBox">
+                    <input type = "email" name = "email" value=<%= list.email%>>
+                    <label>Email Address</label>
+                </div>
+                <div class="inputBox">
+                    <input type = "text" name = "phone" value=<%= list.phone%>>
+                    <label>Number</label>
+                </div>
+                <div class="inputBox">
+                    <input type = "password" name = "password">
+                    <label>password</label>
+                </div>
+                
+                <div style="text-align:center">
+                    <input type = "submit" name="" value="Edit Details">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Details</h4>
+        </div>
+        <div class="modal-body box">
+            <form method="post" id="data" autocomplete="off" action="/users/update/<%=list._id%>?change=add">
+                <h2 style="text-align: left; color:#9c8888ad">User Details</h2>
+                <br>
+                <div class="inputBox">
+                    <input type = "text" name = "state" >
+                    <label>State</label>
+                </div>
+                <div class="inputBox">
+                    <input type = "city" name = "city" >
+                    <label>City</label>
+                </div>
+                <div class="inputBox">
+                    <input type = "text" name = "address" >
+                    <label>Address</label>
+                </div>
+                
+                <div style="text-align:center">
+                    <input type = "submit" name="" value="Add Details">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>
