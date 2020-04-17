@@ -77,11 +77,11 @@ You need to have npm and Node.js, and MongoDB installed.
  
  
 ## Dependencies Installed
-express- A framework for nodejs
-ejs - A template engine used for front end
-mongoose - Used as database for storing data
-passport - used for authentication
-passport-local - used for storing user details in cookies and used this strategy for authentication
+express- A framework for nodejs <br />
+ejs - A template engine used for front end<br />
+mongoose - Used as database for storing data<br />
+passport - used for authentication<br />
+passport-local - used for storing user details in cookies and used this strategy for authentication<br />
 validator - for validating email while saving to database
 connect-flash - for displaying flash message
 cookie-session - stores the session data on the client within a cookie
