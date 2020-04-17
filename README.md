@@ -82,10 +82,10 @@ ejs - A template engine used for front end<br />
 mongoose - Used as database for storing data<br />
 passport - used for authentication<br />
 passport-local - used for storing user details in cookies and used this strategy for authentication<br />
-validator - for validating email while saving to database
-connect-flash - for displaying flash message
-cookie-session - stores the session data on the client within a cookie
-express-session - Create a session middleware
-nodemon - used as a dev dependency to update the server continuously
+validator - for validating email while saving to database<br />
+connect-flash - for displaying flash message<br />
+cookie-session - stores the session data on the client within a cookie<br />
+express-session - Create a session middleware<br />
+nodemon - used as a dev dependency to update the server continuously<br />
 
  
