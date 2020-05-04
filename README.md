@@ -8,7 +8,7 @@ The user will enter the details in the form regarding their details and will get
 ```bash
 mdkir -p ~/Desktop/Witsy-Internship
 cd ~/Desktop/Witsy-Internship
-git clone https://github.com/ank-21/Witsy-Internship
+git clone https://github.com/ank-21/Login Dashboard
 ```
 
 ## Prerequisites
