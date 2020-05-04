@@ -1,4 +1,5 @@
-# Witsy Intern
+# Login Dashoard
+
 
 This is a simple REST API server implementation built on top of Node.js, Express.js with Mongoose.js for MongoDB integration. For user benefits messages have been displayed using flash messages using dependency connect-flash
 The user will enter the details in the form regarding their details and will get their details in the dashboard page.
